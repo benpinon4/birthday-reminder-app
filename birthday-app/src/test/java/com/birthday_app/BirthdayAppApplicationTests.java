@@ -1,10 +1,10 @@
-package com.birthday_reminder_app;
+package com.birthday_app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BirthdayReminderAppApplicationTests {
+class BirthdayAppApplicationTests {
 
 	@Test
 	void contextLoads() {

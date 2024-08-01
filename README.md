@@ -16,5 +16,7 @@ Calendar View Page
 
 
 
-Entity Relationship Diagram / Database Model
+Entity Relationship Diagram / Database 
 ![Entity Relationship Diagram](image-2.png)
+
+
