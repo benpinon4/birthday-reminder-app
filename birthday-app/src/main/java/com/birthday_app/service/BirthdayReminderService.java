@@ -42,11 +42,15 @@ public class BirthdayReminderService {
     }
   
     public BirthdayReminder updateBirthdayReminder(BirthdayReminder birthdayReminder) {
-        BirthdayReminder existingBirthdayReminder = repository.findById(birthdayReminder.getReminderId()).orElse(null);
+        
+        BirthdayReminder existingBirthdayReminder = repository.findById(birthdayReminder.getReminderId()).orElse(new BirthdayReminder());
+        existingBirthdayReminder.setUserId(birthdayReminder.getUserId());
         existingBirthdayReminder.setFirstName(birthdayReminder.getFirstName());
         existingBirthdayReminder.setLastName(birthdayReminder.getLastName());
         existingBirthdayReminder.setBirthDate(birthdayReminder.getBirthDate());
         existingBirthdayReminder.setDescription(birthdayReminder.getDescription());
+        System.out.println("Updating a Birthday Reminder" + birthdayReminder.getReminderId());
+        System.out.println(existingBirthdayReminder);
         return repository.save(existingBirthdayReminder);
     }
 }

@@ -13,7 +13,7 @@ public class BirthdayReminder {
     @Id
     @GeneratedValue
     private int reminderId;
-
+    
     @Column(name = "user_id")
     private int userId;
 
@@ -23,10 +23,10 @@ public class BirthdayReminder {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "birth_date", nullable = false, length = 200)
+    @Column(name = "birth_date")
     private String birthDate;
 
-    @Column(name = "descript", nullable = false, length = 200)
+    @Column(name = "descript")
     private String descript;
     // generate getters and setters
 

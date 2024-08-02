@@ -44,12 +44,12 @@ public class BirthdayReminderController {
     }
   
       
-    // @GetMapping("/BirthdayReminder/{firstName}") 
-    //   public BirthdayReminder findBirthdayReminderByFirstName(@PathVariable String firstName) { return
-    //   service.getBirthdayReminderByFirstName(firstName); }
+    @GetMapping("/BirthdayReminder/{firstName}") 
+      public BirthdayReminder findBirthdayReminderByFirstName(@PathVariable String firstName) { return
+      service.getBirthdayReminderByFirstName(firstName); }
        
   
-    @PutMapping("/update")
+    @PutMapping("/update/{reminderId}")
     public BirthdayReminder updateBirthdayReminder(@RequestBody BirthdayReminder birthdayReminder) {
         return service.updateBirthdayReminder(birthdayReminder);
     }
