@@ -28,12 +28,12 @@ public class BirthdayReminderService {
     }
   
     public BirthdayReminder getBirthdayReminderById(int reminderId) {
-        return repository.findById(reminderId).orElse(null);
+        return repository.findById(reminderId).orElse(new BirthdayReminder());
     }
   
       
-    //   public BirthdayReminder getBirthdayReminderByFirstName(String name) { return
-    //   repository.findByFirstName(name); }
+      public BirthdayReminder getBirthdayReminderByFirstName(String name) { return
+      repository.findByFirstName(name); }
        
   
     public String deleteBirthdayReminder(int remdinderId) {

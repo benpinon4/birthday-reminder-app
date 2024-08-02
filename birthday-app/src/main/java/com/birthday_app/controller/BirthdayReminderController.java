@@ -36,8 +36,9 @@ public class BirthdayReminderController {
     public List<BirthdayReminder> findAllBirthdayReminders() {
         return service.getBirthdayReminders();
     }
-  
-    @GetMapping("/BirthdayReminderByReminderId/{id}")
+    
+    
+    @GetMapping("/BirthdayReminderByReminderId/{remdinderId}")
     public BirthdayReminder findBirthdayReminderByReminderId(@PathVariable int remdinderId) {
         return service.getBirthdayReminderById(remdinderId);
     }
@@ -53,7 +54,7 @@ public class BirthdayReminderController {
         return service.updateBirthdayReminder(birthdayReminder);
     }
   
-    @DeleteMapping("/delete/{empid}")
+    @DeleteMapping("/delete/{reminderId}")
     public String deleteBirthdayReminder(@PathVariable int reminderId) {
         return service.deleteBirthdayReminder(reminderId);
     }
