@@ -11,6 +11,6 @@ import com.birthday_app.entity.BirthdayReminder;
 public interface BirthdayReminderRepository extends JpaRepository<BirthdayReminder,Integer> {
  
     BirthdayReminder findByFirstName(String name);
-
+    
  
 }
