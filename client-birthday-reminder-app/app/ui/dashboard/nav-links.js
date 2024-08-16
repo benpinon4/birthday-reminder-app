@@ -8,8 +8,8 @@ import {
 
 
 const links = [
-    {name: "Home", href: "/dashboard/listview", icon: "HomeIcon"},
-    {name: "Calendar", href: "/dashboard/calendar", icon: "HomeIcon"}
+    {name: "Home", href: "/dashboard/listview", icon: "homeicon"},
+    {name: "Calendar", href: "/dashboard/calendar", icon: "homeicon"}
 ]
 
 
