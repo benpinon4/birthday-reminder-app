@@ -28,11 +28,17 @@ public class BirthdayReminderService {
     }
   
     public BirthdayReminder getBirthdayReminderById(int reminderId) {
+        System.out.println("Finding birthday reminder by ReminderID: " + reminderId);
+        BirthdayReminder existingBirthdayReminder = repository.findById(reminderId).orElse(new BirthdayReminder());
+        System.out.println(existingBirthdayReminder);
         return repository.findById(reminderId).orElse(new BirthdayReminder());
     }
   
       
-      public BirthdayReminder getBirthdayReminderByFirstName(String name) { return
+      public BirthdayReminder getBirthdayReminderByFirstName(String name) { 
+        
+        System.out.println("Finding by the following name: " + name);
+        return
       repository.findByFirstName(name); }
        
   
@@ -44,6 +50,8 @@ public class BirthdayReminderService {
     public BirthdayReminder updateBirthdayReminder(BirthdayReminder birthdayReminder) {
         
         BirthdayReminder existingBirthdayReminder = repository.findById(birthdayReminder.getReminderId()).orElse(new BirthdayReminder());
+
+        System.out.println(existingBirthdayReminder);
         existingBirthdayReminder.setUserId(birthdayReminder.getUserId());
         existingBirthdayReminder.setFirstName(birthdayReminder.getFirstName());
         existingBirthdayReminder.setLastName(birthdayReminder.getLastName());

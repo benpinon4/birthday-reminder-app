@@ -12,6 +12,7 @@ public class BirthdayReminder {
 
     @Id
     @GeneratedValue
+    @Column(name = "reminder_id")
     private int reminderId;
     
     @Column(name = "user_id")
