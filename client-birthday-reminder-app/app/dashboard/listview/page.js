@@ -8,6 +8,7 @@ const Page = () => {
   const [birthdayReminderList, setBirthdayReminderList] = useState([]);
   const [reloadPage, setReloadPage] = useState(false);
   const testArray = [1, 2, 3, 4, 5];
+  const bearer_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2JieTEiLCJpYXQiOjE3MjczODg1MTUsImV4cCI6MTcyNzM5MjExNX0.Ov-YmU--6l1vPRXRbpFMPNaIZ4_porIg7d5hPOhlFGA7RGBvuVWlyBlpLz7ZQ31T87pzxYRfNH1Dyiafsf9dBA" 
   const buildElement = testArray.map((item, index) => {
     return <div key={index}>{item}</div>;
   });
@@ -26,8 +27,15 @@ const Page = () => {
   );
   useEffect(() => {
     const getBirthdayReminders = async () => {
-      const query = await fetch("http://localhost:8094/BirthdayReminders");
+      const query = await fetch("http://localhost:8094/resource/BirthdayReminders", {
+        method: "GET",  
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + bearer_token
+        },
+      })
       const response = await query.json();
+      console.log(response)
       setBirthdayReminderList(response);
     };
     getBirthdayReminders();
