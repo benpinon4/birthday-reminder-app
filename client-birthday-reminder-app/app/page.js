@@ -1,18 +1,35 @@
-"use client"
 
-import Image from "next/image";
-import { signIn, signOut } from "next-auth/react";
-import Link from "next/link";
-
-
+'use client'
+import BirthdayReminderPage from "./components/BirthdayReminderPage";
+import CalendarPage from "./components/CalendarPage";
+import { useRouter,usePathname } from 'next/navigation';
 
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+export default function Page() {
+  const router = useRouter();
+  const pathname = usePathname();
+  console.log(pathname)
+
+  const renderContent = () => {
+    console.log(pathname)
+    switch (pathname) {
       
-      <p>Login Page</p>
-      <Link href="/login" onClick={()=>signIn()}>Sign In</Link>
-    </main>
+      case '/':
+        return <BirthdayReminderPage />;
+      case '/calendar':
+        return <CalendarPage />;
+      default:
+        return <BirthdayReminderPage />;
+
+    }
+  };
+
+  return (
+    <div>
+
+      {renderContent()}
+    </div>
   );
 }
+
+

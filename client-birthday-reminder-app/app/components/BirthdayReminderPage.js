@@ -4,14 +4,14 @@ import BirthdayReminderCard from "@/app/ui/components/BirthdayReminderCard";
 import { useEffect, useState } from "react";
 import AddBirthdayReminder from "@/app/ui/components/AddBirthdayReminder";
 
-const Page = () => {
+const BirthdayReminderPage = () => {
   const [birthdayReminderList, setBirthdayReminderList] = useState([]);
   const [reloadPage, setReloadPage] = useState(false);
   const testArray = [1, 2, 3, 4, 5];
-  const bearer_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2JieTEiLCJpYXQiOjE3MjczODg1MTUsImV4cCI6MTcyNzM5MjExNX0.Ov-YmU--6l1vPRXRbpFMPNaIZ4_porIg7d5hPOhlFGA7RGBvuVWlyBlpLz7ZQ31T87pzxYRfNH1Dyiafsf9dBA" 
-  const buildElement = testArray.map((item, index) => {
-    return <div key={index}>{item}</div>;
-  });
+  const bearer_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2JieTEiLCJpYXQiOjE3Mjc0NTk0NDAsImV4cCI6MTcyNzQ2MzA0MH0.VqmIreh4Xlme7F0ePAez8pttr4ef7bVNJO-R_QUfOPF6mvytA_HidFRUt99F5r30caVU5mjXtRmjS_A_2Zx2Yw" 
+  // const buildElement = testArray.map((item, index) => {
+  //   return <div key={index}>{item}</div>;
+  // });
   const birthdayReminderListElementList = birthdayReminderList.map(
     (item, index) => {
       return (
@@ -53,4 +53,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default BirthdayReminderPage;
