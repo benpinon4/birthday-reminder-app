@@ -8,7 +8,7 @@ const BirthdayReminderPage = () => {
   const [birthdayReminderList, setBirthdayReminderList] = useState([]);
   const [reloadPage, setReloadPage] = useState(false);
   const testArray = [1, 2, 3, 4, 5];
-  const bearer_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2JieTEiLCJpYXQiOjE3Mjc0NTk0NDAsImV4cCI6MTcyNzQ2MzA0MH0.VqmIreh4Xlme7F0ePAez8pttr4ef7bVNJO-R_QUfOPF6mvytA_HidFRUt99F5r30caVU5mjXtRmjS_A_2Zx2Yw" 
+  const bearer_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2JieTEiLCJpYXQiOjE3Mjc1MjkzMjAsImV4cCI6MTcyNzUzMjkyMH0.GPV7sRTp-ifv8MWo89Ckfn-Wr0X_VIPwHXOy6NGRmrgtYhdu3QcFMTYtZU8rMPe0IietVEw3z7Cnt6mweUYIhw" 
   // const buildElement = testArray.map((item, index) => {
   //   return <div key={index}>{item}</div>;
   // });

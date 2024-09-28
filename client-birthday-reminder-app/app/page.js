@@ -1,35 +1,35 @@
-
-'use client'
+"use client";
 import BirthdayReminderPage from "./components/BirthdayReminderPage";
 import CalendarPage from "./components/CalendarPage";
-import { useRouter,usePathname } from 'next/navigation';
-
+import Login from "./components/Login";
+import CreateAccountPage from "./components/CreateAccountPage";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Page() {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname)
+  console.log(pathname);
 
   const renderContent = () => {
-    console.log(pathname)
+    console.log(pathname);
     switch (pathname) {
-      
-      case '/':
+      case "/":
+        console.log("case 1");
+        return <Login />;
+      case "/addreminder":
+        console.log("case 2");
         return <BirthdayReminderPage />;
-      case '/calendar':
+      case "/calendar":
+        console.log("case 3");
         return <CalendarPage />;
+      case "/createaccount":
+        console.log("case 4");
+        return <CreateAccountPage />;
       default:
-        return <BirthdayReminderPage />;
-
+        console.log("case d");
+        return <Login />;
     }
   };
 
-  return (
-    <div>
-
-      {renderContent()}
-    </div>
-  );
+  return <div>{renderContent()}</div>;
 }
-
-
