@@ -18,6 +18,9 @@ import com.birthday_app.dtos.AuthenticationRequest;
 import com.birthday_app.dtos.AuthenticationResponse;
 import com.birthday_app.security.jwt.JwtUtil;
 
+import jakarta.security.auth.message.callback.PrivateKeyCallback;
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -40,6 +43,9 @@ public class AuthController {
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
         final String jwt = jwtUtil.generateToken(userDetails);
+         
+       
+
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }

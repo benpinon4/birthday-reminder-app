@@ -20,6 +20,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
 
@@ -48,6 +49,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         String token = jwtUtil.generateToken((UserDetails) authResult.getPrincipal());
+        HttpSession session = request.getSession();
+        session.setAttribute("token", token);
         response.addHeader("Authorization", "Bearer " + token);
     }
 }

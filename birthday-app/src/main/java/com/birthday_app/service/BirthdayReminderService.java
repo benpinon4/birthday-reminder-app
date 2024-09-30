@@ -61,4 +61,9 @@ public class BirthdayReminderService {
         System.out.println(existingBirthdayReminder);
         return repository.save(existingBirthdayReminder);
     }
+    public String goToLogin() {
+        
+        return "Token is invalid";
+    }
+
 }

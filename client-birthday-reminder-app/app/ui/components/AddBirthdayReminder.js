@@ -31,7 +31,6 @@ const AddBirthdayReminder = (props) => {
     <div>
       <div className="bg-white rounded-lg shadow-lg p-6 w-11/12">
         <h2 className="text-lg font-medium mb-6">Add A Birthday Reminder</h2>
-        <form>
           <div className="grid grid-cols-2 gap-6">
             <div className="col-span-2 sm:col-span-1">
               <label
@@ -117,7 +116,6 @@ const AddBirthdayReminder = (props) => {
               Save
             </button>
           </div>
-        </form>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { useRouter,usePathname } from "next/navigation";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [passWord, setPassword] = useState("");
   const [triggerLogin, setTriggerLogin] = useState(false);
 
   const router = useRouter();
@@ -26,7 +26,7 @@ const Login = () => {
   method: "POST",
   body: JSON.stringify({
     userName: userName,
-    passWord: password,
+    passWord: passWord,
   }),
   headers: {
     "Content-Type": "application/json",
@@ -92,7 +92,9 @@ const Login = () => {
                 <button
                   type="submit"
                   className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-                  onClick={()=>{logIntoApp()}}
+                  onClick={()=>{logIntoApp()
+                    router.push("/addreminder")
+                  }}
                 >
                   Sign in
                 </button>
@@ -105,7 +107,7 @@ const Login = () => {
                     router.push("/createaccount")
                   }
                   }
-                  className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"
+                  className="font-semibold text-gray-500 hover:underline hover:text-gray-600 focus:text-gray-800 focus:outline-none"
                 >
                   Sign up
                 </button>

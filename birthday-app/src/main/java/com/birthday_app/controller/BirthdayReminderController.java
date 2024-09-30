@@ -12,19 +12,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.ArrayList;
 
 import com.birthday_app.entity.BirthdayReminder;
 import com.birthday_app.service.BirthdayReminderService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/resource")
 public class BirthdayReminderController {
+
+
   
     @Autowired
     private BirthdayReminderService service;
   
     @PostMapping("/addBirthdayReminder")
-    public BirthdayReminder addBirthdayReminder(@RequestBody BirthdayReminder birthdayReminder) {
+    public BirthdayReminder addBirthdayReminder(@RequestBody BirthdayReminder birthdayReminder, HttpSession session) {
+        String token = (String) session.getAttribute("token");
+        System.out.println(token + "in controller");
+        
         return service.saveBirthdayReminder(birthdayReminder);
     }
   
@@ -34,8 +42,19 @@ public class BirthdayReminderController {
     }
     
     @GetMapping("/BirthdayReminders")
-    public List<BirthdayReminder> findAllBirthdayReminders() {
-        return service.getBirthdayReminders();
+    public List<BirthdayReminder> findAllBirthdayReminders(HttpSession session) {
+        String token = (String) session.getAttribute("token");
+        System.out.println(token + "in controller");
+        if(token != null){
+
+            System.out.println("in top if condition in Birthday Controller");
+            return service.getBirthdayReminders();
+        }else {
+
+          
+            return null;
+        }
+        
     }
     
     
