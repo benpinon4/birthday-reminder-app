@@ -12,5 +12,6 @@ public interface BirthdayReminderRepository extends JpaRepository<BirthdayRemind
  
     BirthdayReminder findByFirstName(String name);
 
+
  
 }

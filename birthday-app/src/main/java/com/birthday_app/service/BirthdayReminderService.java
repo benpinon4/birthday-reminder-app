@@ -1,6 +1,7 @@
 package com.birthday_app.service;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.birthday_app.entity.BirthdayReminder;
 import com.birthday_app.repository.BirthdayReminderRepository;
+
 
 @Service
 public class BirthdayReminderService {
@@ -40,7 +42,11 @@ public class BirthdayReminderService {
         System.out.println("Finding by the following name: " + name);
         return
       repository.findByFirstName(name); }
-       
+
+    public String checkSession(){
+    
+        return "Valid Token";
+    }   
   
     public String deleteBirthdayReminder(int remdinderId) {
         repository.deleteById(remdinderId);

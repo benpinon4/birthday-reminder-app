@@ -13,7 +13,19 @@ const links = [
     {name: "Home", href: "/", icon: "Homeicon"},
     {name: "Calendar", href: "/calendar", icon: "Homeicon"}
 ]
-
+const checkSession = async ()=>{
+  const bearer_token = localStorage.getItem('token');
+  console.log(bearer_token)
+  const checkTokenRequest = await fetch("http://localhost:8094/resource/checksession", {
+      method: "GET",  
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + bearer_token
+      },
+    })
+    const response = await checkTokenRequest.json();
+    console.log(response)
+}
 
 const NavLinks = () => {
   const router = useRouter()
@@ -23,7 +35,9 @@ const NavLinks = () => {
         <>
          <button
                 key="/"
-                onClick={()=>router.push("/addreminder")}
+                onClick={()=>{
+                  checkSession()
+                  router.push("/addreminder")}}
                 // href={link.href}
                 className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
               >

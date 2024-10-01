@@ -1,41 +1,82 @@
 "use client";
 
 
+// import logIntoApp from "../functions/loginStoreCookie";
 import { useEffect, useState } from "react";
 import { useRouter,usePathname } from "next/navigation";
+
 
 const Login = () => {
   const [userName, setUserName] = useState("");
   const [passWord, setPassword] = useState("");
+  const [message, setMessage] =useState("")
   const [triggerLogin, setTriggerLogin] = useState(false);
+  const [tokenValue, setTokenValue] = useState("")
 
   const router = useRouter();
   const pathname = usePathname();
-
-  // useEffect(()=>{
-
-
+   
+  useEffect(()=>{
 
 
-  // setTriggerLogin(false)
 
-  // },[triggerLogin])
+    const logIntoApp = async ()=>{
+      if (typeof window !== 'undefined') {
+        // Client-side only code 
+      }
+      const MAX_AGE = 60 * 60 * 24 * 30;
+      console.log(userName)
+      console.log(passWord)
+      const loginRequest = await fetch("http://localhost:8094/api/auth/login", {
+    method: "POST",
+    body: JSON.stringify({
+      userName: userName,
+      passWord: passWord,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  
+      const response = await loginRequest.json()
 
-  const logIntoApp = async ()=>{
-    const loginRequest = await fetch("http://localhost:8094/api/auth/login", {
-  method: "POST",
-  body: JSON.stringify({
-    userName: userName,
-    passWord: passWord,
-  }),
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
+      localStorage.setItem('token', response.jwt);
+      setTokenValue(localStorage.getItem("token"))
+      console.log(response.message)
+      if(loginRequest.ok){
+        router.push("/addreminder")
+      } else if(response.message="Bad credentials"){
+        setMessage(response.message)
+        alert(response.message)
+      } else{}
+      
+  
+  }
+  
+  if(userName !== "" || passWord !== "" && message !== "Bad credentials"){
+    logIntoApp()
+    
+  }
+  
+  
+  },[triggerLogin])
 
-    const response = await loginRequest.json()
-    console.log(response)
-}
+//   const logIntoApp = async ()=>{
+//     const loginRequest = await fetch("http://localhost:8094/api/auth/login", {
+//   method: "POST",
+//   body: JSON.stringify({
+//     userName: userName,
+//     passWord: passWord,
+//   }),
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// })
+
+//     const response = await loginRequest.json()
+//     console.log(response)
+
+// }
 
   return (
     <>
@@ -92,8 +133,9 @@ const Login = () => {
                 <button
                   type="submit"
                   className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-                  onClick={()=>{logIntoApp()
-                    router.push("/addreminder")
+                  onClick={()=>{setTriggerLogin(Math.random())
+                    
+                    
                   }}
                 >
                   Sign in

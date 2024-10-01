@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
 
 import com.birthday_app.entity.BirthdayReminder;
 import com.birthday_app.service.BirthdayReminderService;
@@ -27,6 +26,15 @@ public class BirthdayReminderController {
   
     @Autowired
     private BirthdayReminderService service;
+
+    @GetMapping("/checksession")
+    public String checkSession (){
+
+  
+        return service.checkSession();
+    }
+
+
   
     @PostMapping("/addBirthdayReminder")
     public BirthdayReminder addBirthdayReminder(@RequestBody BirthdayReminder birthdayReminder, HttpSession session) {
@@ -80,4 +88,6 @@ public class BirthdayReminderController {
     public String deleteBirthdayReminder(@PathVariable int reminderId) {
         return service.deleteBirthdayReminder(reminderId);
     }
+
+  
 }
